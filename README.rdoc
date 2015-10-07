@@ -4,7 +4,7 @@ YourTradeBase Code Test
 Instructions
 ------------
 
-This is a very simple rails application that allows users to manage a list of books. The app mainly contains rails auto generated scaffold code, however some code has been added to allow books to be managed via the users show page. This code has not been written very well! We would like you to refactor the code in order to make the code more maintainable and to be written in a style more suited to a well written rails application. The application has some basic Rspec tests that can be run using the `rspec` command.
+This is a very simple rails application that allows users to manage a list of books. The app mainly contains rails auto generated scaffold code, however some code has been added to allow books to be managed via the users show page. This code has not been written very well! We would like you to refactor the code in order to make the code more maintainable and to be written in a style more suited to a well written rails application. There has also been a complaint from some end users that the site is slow to respond occasionally when creating new users. The application has some basic Rspec tests that can be run using the `rspec` command.
 
 Please spend no more than 2 hours on the exercise excluding any time it takes to install the required software such as ruby, gems etc.
 
