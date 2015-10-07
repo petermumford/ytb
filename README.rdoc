@@ -1,0 +1,29 @@
+YourTradeBase Code Test
+=======================
+
+Instructions
+------------
+
+This is a very simple rails application that allows users to manage a list of books. The app mainly contains rails auto generated scaffold code, however some code has been added to allow books to be managed via the users show page. This code has not been written very well! We would like you to refactor the code in order to make the code more maintainable and to be written in a style more suited to a well written rails application. The application has some basic Rspec tests that can be run using the `rspec` command.
+
+Please spend no more than 2 hours on the exercise excluding any time it takes to install the required software such as ruby, gems etc.
+
+We would like you to keep a record of your thought process and actions taken in order to prepare the application and refactor the code, please be as detailed as possible. You should include your explanations as to why the code you have found is badly written and how you think your refactored code will improve the codebase.
+
+We are interested mainly in your thought process through the exercise, don't worry if you don't manage to complete the refactoring in the time allowed, you may add any suggestions for further refactoring you would wish to carry out if you had more time.
+
+Your taske are:
+
+1. Clone the git repository from the location provided in your email
+2. Install the correct ruby version for the project using a ruby version manager of your choice
+3. Install the required gems for the project using bundler
+5. Run the applications migrations
+6. Identify code to be refactored
+7. Create 1 commit(s) with your refactored code
+8. Create 1 commit with your notes
+9. Push the commits to the github repository
+
+Please add your notes below.
+
+Notes
+-----
