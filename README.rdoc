@@ -14,14 +14,15 @@ We are interested mainly in your thought process through the exercise, don't wor
 
 Your taske are:
 
-1. Clone the git repository from the location provided in your email
+1. Fork this git repository to your own github account then clone it
 2. Install the correct ruby version for the project using a ruby version manager of your choice
 3. Install the required gems for the project using bundler
-5. Run the applications migrations
+5. Setup the applications database
 6. Identify code to be refactored
-7. Create 1 commit(s) with your refactored code
+7. Create appropriate commits for your refactored code
 8. Create 1 commit with your notes
-9. Push the commits to the github repository
+9. Push the commits to your github repository
+10. Provide us with the url of your github fork of the app
 
 Please add your notes below.
 
