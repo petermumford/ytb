@@ -1,15 +1,12 @@
-<p>
-  <strong>Books:</strong>
-  <ul>
-    <% if books.any? %>
-      <% books.each do |book| %>
-        <li>
-          <%= book.title %>
-          <%= link_to 'Destroy', book_path(book), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </li>
+<div class="books_list">
+  <p>
+    <strong>Books:</strong>
+    <ul>
+      <% if books.any? %>
+        <% books.each do |book| %>
+          <%= render partial: '/books/list_item', locals: { book: book } %>
+        <% end %>
       <% end %>
-    <% else %>
-      <li>No books are available</li>
-    <% end %>
-  </ul>
-</p>
+    </ul>
+  </p>
+</div>

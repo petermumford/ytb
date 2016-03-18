@@ -1,0 +1,4 @@
+<li class="book_id_<%= book.id %>">
+  <%= book.title %>
+  <%= link_to 'Destroy', book_path(book), method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+</li>

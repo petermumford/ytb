@@ -5,9 +5,11 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
+        format.js { }
         format.html { redirect_to @book.user, notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
+        format.js { render status: :unprocessable_entity }
         format.html { render :new }
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
@@ -16,11 +18,13 @@ class BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
-    @book.destroy
 
     respond_to do |format|
-      format.html { redirect_to @book.user, notice: 'Book was successfully destroyed.' }
-      format.json { head :no_content }
+      if @book.destroy
+        format.js { }
+        format.html { redirect_to @book.user, notice: 'Book was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 

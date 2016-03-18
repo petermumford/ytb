@@ -8,7 +8,6 @@
   <%= @user.email %>
 </p>
 
-
 <%= render partial: '/books/list', locals: { books: @user.books } %>
 <%= render partial: '/books/form', locals: { user: @user, book: @user.books.new } %>
 

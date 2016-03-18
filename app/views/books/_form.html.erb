@@ -1,9 +1,11 @@
-Add a book for <%= user.name %>
-<%= simple_form_for(book, url: books_path) do |f| %>
-  <%= f.hidden_field :user_id, value: user.id %>
-  <%= f.input :title %>
+<div class="add_book_form">
+  Add a book for <%= user.name %>
+  <%= simple_form_for(book, url: books_path, remote: true, html: {class: 'add_book'}) do |f| %>
+    <%= f.hidden_field :user_id, value: user.id %>
+    <%= f.input :title %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+<% if @book.errors.any? %>
+  $(".add_book_form").replaceWith('<%= j render partial: "/books/form", locals: { user: @book.user, book: @book } %>');
+<% else %>
+  // lets make sure we remove all errors
+  // incase validation failed last time
+  $('.error, .error_notification').remove();
+  $("div.input").removeClass( "field_with_errors" );
+
+  $(".books_list ul").append('<%= j render partial: "list_item", locals: { book: @book } %>');
+  $('form.add_book input#book_title').val('');
+<% end %>
