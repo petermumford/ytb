@@ -1,5 +1,5 @@
 Add a book for <%= user.name %>
-<%= simple_form_for(book, url: create_book_user_path(user.id)) do |f| %>
+<%= simple_form_for(book, url: books_path) do |f| %>
   <%= f.hidden_field :user_id, value: user.id %>
   <%= f.input :title %>
 

@@ -8,21 +8,9 @@
   <%= @user.email %>
 </p>
 
-<% if @user.books.any? %>
-  <p>
-    <strong>Books:</strong>
-    <ul>
-      <% @user.books.each do |book| %>
-        <li>
-          <%= book.title %>
-          <%= link_to 'Destroy', destroy_book_user_path(@user, book_id: book.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </li>
-      <% end %>
-    </ul>
-  </p>
-<% end %>
 
-<%= render partial: 'book_form', locals: { user: @user, book: @user.books.new } %>
+<%= render partial: '/books/list', locals: { books: @user.books } %>
+<%= render partial: '/books/form', locals: { user: @user, book: @user.books.new } %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
