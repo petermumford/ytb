@@ -19,4 +19,14 @@ RSpec.feature 'Users:', type: :feature do
 
   end
 
+  describe "Show a user" do
+
+    it "should redirect if a user doesn't exist" do
+      visit user_path(id: 100)
+      expect(page.current_url).to eq(root_url)
+      expect(page).to have_content('User could not be found')
+    end
+
+  end
+
 end
