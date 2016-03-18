@@ -22,7 +22,7 @@
   </p>
 <% end %>
 
-<%= render partial: 'book_form', locals: { user: @user } %>
+<%= render partial: 'book_form', locals: { user: @user, book: @user.books.new } %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

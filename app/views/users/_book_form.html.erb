@@ -1,11 +1,9 @@
 Add a book for <%= user.name %>
-<%= form_for(:book, url: create_book_user_path(user.id)) do |f| %>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
+<%= simple_form_for(book, url: create_book_user_path(user.id)) do |f| %>
   <%= f.hidden_field :user_id, value: user.id %>
-  <div class="actions">
-    <%= f.submit %>
+  <%= f.input :title %>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>
