@@ -9,12 +9,18 @@ RSpec.feature 'Books:', type: :feature do
     before do
       user
       visit user_path(user)
-      fill_in 'Title', with: 'My new book'
-      click_on 'Save Book'
     end
 
-    it 'displays the book title on the user show page' do
+    it 'displays the book title on the user show page', js: true do
+      fill_in 'Title', with: 'My new book'
+      click_on 'Create Book'
       expect(page).to have_content('My new book')
+    end
+
+    it "will fail as title needs a value", js: true do
+      click_on 'Create Book'
+      expect(page).to_not have_content('My new book')
+      expect(page).to have_content("can't be blank")
     end
 
   end
@@ -28,9 +34,11 @@ RSpec.feature 'Books:', type: :feature do
       visit user_path(user)
     end
 
-    it 'displays the book title on the user show page' do
+    it 'displays the book title on the user show page', js: true do
       expect(page).to have_content('Wonderful book')
-      click_on 'Destroy'
+      accept_confirm do
+        click_on 'Destroy'
+      end
       expect(page).to_not have_content('Wonderful book')
     end
 
