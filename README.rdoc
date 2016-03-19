@@ -12,7 +12,7 @@ We would like you to keep a record of your thought process and actions taken in 
 
 We are interested mainly in your thought process through the exercise, don't worry if you don't manage to complete the refactoring in the time allowed, you may add any suggestions for further refactoring you would wish to carry out if you had more time.
 
-Your taske are:
+Your tasks are:
 
 1. Fork this git repository to your own github account then clone it
 2. Install the correct ruby version for the project using a ruby version manager of your choice
@@ -28,3 +28,37 @@ Please add your notes below.
 
 Notes
 -----
+
+
+Faults identified:
+
+1. Model validations
+1. Create Books controller with create and destroy actions
+1. Book controller actions are perfect for using Turbolinks
+1. Move AdminMailer to the model with a `after_create` callback, also use Sidekiq to move the processing to a background job allowing the application to continue as normal while the email is being sent.
+1. Use *simple_form* to clean up the code.
+
+
+Steps made:
+
+1. I decided to move the root path to the top of the *routes.rb* file as this is the main home page and I don't want anything to override it.
+1. Moving the flash message to the application layout allows me to only use the code once and not in separate action views. Also, I have better control with the CSS and positioning of the flash messages.
+1. By using a rescue for ActiveRecord::RecordNotFound I can now capture the error and present a much clear message to the end user instead of showing a message that doesn't make any sense. I can do other things in this rescue block, for example sending the error via an email.
+1. Decided to use *simple_form* as it cleans my code up immensely and keeps all the forms consistent. Uses inline error messaging.
+1. Added validation to *User* and *Book* models. Added a new gem called `email_validator`, which handles the format of the email. This adds a validator to the *ActiveModel::EachValidator* so I can now reference this gem by adding `email: true` to the `validates` method. I also want to make sure the email is unique. All the other validations are making sure there is a value.
+1. Moved the *create_book* and *destroy_book* to a new books controller and renamed the actions to restful names - *create* and *destroy* - Moved the `_book_form.html.erb` to the new folder called *books* and renamed the file to `_form.html.erb` I also moved the books list into a partial called `_list.html.erb` and saved it into the *books* folder. This will help with the maintenance of the code. Added a `resources` route to accept the new book paths for `create` and `destroy` only.
+1. Now I will take advantage of Turbolinks when creating or destroying a book. This will increase the overall performance of the application. The two main tasks I need to do is add the `remote: true` attribute to the forms and links and within the `respond_to` block I need to add `format.js { }` now rails knows it needs to use Turbolinks and find a view that has an extension of *{action_name}.js.erb* and respond with some JQuery that will get executed when the browser receives the response.
+1. Using Sidekiq for my background jobs, which will handle the emails being sent after a user is created. Sidekiq comes with a `delay` method which automatically puts the mailer onto a background job when called. I decided to put the *AdminMailer.delay.new_user* in a `after_create` callback which allows me to move the code to the model and off the controller, keeping the controller skinny and returning a response to the end user as quickly as possible. With this applied it will improve the response when creating a user.
+1. Due to the changes above I need to amend the specs to use Turbolinks. I do this by using the *selenium* gem. I also decided to add a couple more specs/examples to test the validations for book and user and updating the users. I also used the *should-matches* gem, which allows me to test model validations and associations. By doing the association test I found that I missed the `dependent :destroy` from the `has_many :books` association for users.
+
+
+What else can be done due to time constraints:
+
+1. Russian Doll Caching
+   - The way I now have `_list.html.erb`, `_list_items.html.erb` would be perfect and super easy to setup for the Russian Doll Cache method.
+1. Authentication & Authorisation
+   - Allow users to login and CRUD there own books.
+1. Inline editing
+   - Allow the user to edit an existing book inline. Something like the following: https://github.com/bernat/best_in_place
+1. More Testing
+   - Model testing, Mailer tests
